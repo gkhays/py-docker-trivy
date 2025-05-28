@@ -1,5 +1,7 @@
 # Evaluate an SBOM
 
+Given an SBOM, scan it for CVEs.
+
 ```bash
 trivy sbom sbom.json
 ```
