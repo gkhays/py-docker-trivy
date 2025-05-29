@@ -28,16 +28,24 @@ def check_docker_running() -> bool:
         return False
 
 def load_sbom(file_path):
+    """
+    Load an SBOM (Software Bill of Materials) from a JSON file.
+
+    :param file_path: Path to the SBOM file.
+    :return: Parsed SBOM data as a dictionary, or None if an error occurs.
+    """
     try:
         with open(file_path, 'r') as file:
-            json.load(file)
             sbom_data = json.load(file)
-        print(f"✅ SBOM loaded from {file_path}.")
+        LOGGER.info(f"✅ SBOM loaded successfully from {file_path}.")
         return sbom_data
     except FileNotFoundError:
-        print(f"❌ SBOM file not found: {file_path}")
+        LOGGER.error(f"❌ SBOM file not found: {file_path}")
+    except json.JSONDecodeError as e:
+        LOGGER.error(f"❌ Failed to parse SBOM JSON file: {file_path}. Error: {e}")
     except Exception as e:
-        print(f"❌ Error loading SBOM: {e}")
+        LOGGER.error(f"❌ Unexpected error loading SBOM: {e}")
+    return None
 
 def start_container(image_name='aquasec/trivy', sbom_name='sbom.json', scan_file='scan.json'):
     """
