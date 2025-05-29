@@ -43,7 +43,7 @@ Docker version: 27.5.1
 ✅ Container executed successfully.
 ```
 
-## References
+### References
 - [A Python library for the Docker Engine API](https://github.com/docker/docker-py)
 - [Trivy SBOM scanning](https://trivy.dev/latest/docs/target/sbom/)
 - https://github.com/abiosoft/colima/issues/468
