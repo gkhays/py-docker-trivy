@@ -8,6 +8,13 @@ trivy sbom sbom.json
 
 ## Getting Started
 
+### Prerequisites
+
+The following tools are required.
+
+- [uv](https://github.com/astral-sh/uv)
+- [Docker](https://www.docker.com/)
+
 ### Building
 
 Sync dependencies and update lockfile.
